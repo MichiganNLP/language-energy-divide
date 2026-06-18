@@ -5,6 +5,7 @@
 ### Measuring Energy Costs of Multilingual LLM Inference
 
 [![Paper](https://img.shields.io/badge/📄_Paper-arXiv-b31b1b.svg)](https://arxiv.org/abs/XXXX.XXXXX)
+[![Project Page](https://img.shields.io/badge/🌐_Project-Page-23d175.svg)](http://lit.eecs.umich.edu/language-energy-divide/)
 [![Dataset](https://img.shields.io/badge/🤗_Dataset-HuggingFace-ff9d00.svg)](https://huggingface.co/datasets/MichiganNLP/language-energy-divide)
 [![Leaderboard](https://img.shields.io/badge/⚡_ML.ENERGY-Leaderboard-23d175.svg)](https://ml.energy/leaderboard)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
