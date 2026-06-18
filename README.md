@@ -42,7 +42,7 @@ The disparity compounds two factors: higher **per-token energy** for complex/rar
 
 The **full data** — per-language prompts, energy/accuracy/token measurements, and the
 translated GSM8K & LM-Arena prompts — lives on the 🤗 [Hugging Face dataset](https://huggingface.co/datasets/MichiganNLP/language-energy-divide).
-Energy is measured with the [ML.ENERGY Benchmark](https://ml.energy/leaderboard) (vLLM serving + the [Zeus](https://ml.energy/zeus) energy-measurement library), reporting **steady-state** per-token energy.
+Energy is measured with the [ML.ENERGY Benchmark](https://arxiv.org/abs/2505.06371) (vLLM serving + the [Zeus](https://ml.energy/zeus) energy-measurement library), reporting **steady-state** per-token energy.
 
 ### `results/` files
 
