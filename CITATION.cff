@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "The Language–Energy Divide: Measuring Energy Costs of Multilingual LLM Inference"
+authors:
+  - family-names: Deng
+    given-names: Naihao
+  - family-names: Shen
+    given-names: Alissa
+  - family-names: Feng
+    given-names: Yiming
+  - family-names: Nwatu
+    given-names: Joan
+  - family-names: Chung
+    given-names: Jae-Won
+  - family-names: Chowdhury
+    given-names: Mosharaf
+  - family-names: Chen
+    given-names: Yulong
+  - family-names: Mihalcea
+    given-names: Rada
+year: 2026
