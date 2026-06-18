@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Language–Energy Divide</title>
+<meta name="description" content="Measuring energy costs of multilingual LLM inference across 122 languages.">
+<style>
+  :root{
+    --bg:#0f1115; --card:#171a21; --ink:#e8eaed; --muted:#9aa3b2;
+    --accent:#23d175; --accent2:#ff9d00; --danger:#ff5c7a; --line:#262b34;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:var(--accent)}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  header{background:radial-gradient(1200px 400px at 50% -50%,#1d3b2a 0%,transparent 60%),
+                    linear-gradient(180deg,#12151b,#0f1115);
+         border-bottom:1px solid var(--line);padding:64px 0 40px;text-align:center}
+  h1{font-size:2.5rem;line-height:1.15;margin:.2em 0 .1em;
+     background:linear-gradient(90deg,#23d175,#ffd166,#ff5c7a);
+     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{color:var(--muted);font-size:1.15rem;margin:0 0 1.2em}
+  .authors{font-size:1.02rem;margin:.4em 0}
+  .affil{color:var(--muted);font-size:.9rem;margin:.2em 0 1.4em}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:10px;
+       background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;
+       font-weight:600;font-size:.95rem;transition:transform .08s,border-color .2s}
+  .btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+  section{padding:42px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:1.5rem;margin:0 0 .6em}
+  .lead{color:var(--muted);font-size:1.08rem}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat{font-size:2rem;font-weight:800}
+  .s-green{color:var(--accent)} .s-orange{color:var(--accent2)} .s-red{color:var(--danger)}
+  .card p{margin:.3em 0 0;color:var(--muted);font-size:.95rem}
+  figure{margin:22px 0 0;text-align:center}
+  img{max-width:100%;border-radius:12px;border:1px solid var(--line);background:#fff}
+  figcaption{color:var(--muted);font-size:.9rem;margin-top:8px}
+  ul{padding-left:1.1em}
+  pre{background:#0b0d11;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;
+      font-size:.85rem;color:#cdd6e4}
+  footer{padding:34px 0;text-align:center;color:var(--muted);font-size:.9rem}
+  .tag{display:inline-block;background:#10261a;color:var(--accent);border:1px solid #1c3b29;
+       border-radius:999px;padding:2px 10px;font-size:.8rem;margin:2px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div style="font-size:2.6rem">🌍⚡</div>
+    <h1>The Language–Energy Divide</h1>
+    <p class="sub">Measuring Energy Costs of Multilingual LLM Inference</p>
+    <div class="authors">
+      Naihao Deng<sup>1</sup>, Alissa Shen<sup>1</sup>, Yiming Feng<sup>1</sup>,
+      Joan Nwatu<sup>1</sup>, Jae-Won Chung<sup>1</sup>,<br>
+      Mosharaf Chowdhury<sup>1</sup>, Yulong Chen<sup>2,3</sup>, Rada Mihalcea<sup>1</sup>
+    </div>
+    <div class="affil"><sup>1</sup>University of Michigan &nbsp;·&nbsp;
+      <sup>2</sup>University of Cambridge &nbsp;·&nbsp; <sup>3</sup>University of Aberdeen</div>
+    <div class="badges">
+      <a class="btn" href="https://arxiv.org/abs/XXXX.XXXXX">📄 Paper</a>
+      <a class="btn" href="https://github.com/MichiganNLP/language-energy-divide">💻 Code</a>
+      <a class="btn" href="https://huggingface.co/datasets/MichiganNLP/language-energy-divide">🤗 Dataset</a>
+      <a class="btn" href="https://ml.energy/leaderboard">⚡ ML.ENERGY</a>
+    </div>
+  </div>
+</header>
+
+<section><div class="wrap">
+  <h2>📝 Overview</h2>
+  <p class="lead">Large language models are increasingly deployed in multilingual settings, yet
+  the <strong>energy cost</strong> of serving them across languages is poorly understood. We
+  present the first systematic measurement of inference energy across <strong>122 languages</strong>,
+  and reveal a stark, persistent <em>language–energy divide</em>: serving low-resource languages
+  costs dramatically more energy — and those same languages are answered <em>least</em> accurately.</p>
+  <div class="cards">
+    <div class="card"><div class="stat s-green">8.3×</div><p>variation in <strong>per-token energy</strong> across languages (single model)</p></div>
+    <div class="card"><div class="stat s-orange">179×</div><p><strong>total energy</strong> gap — English (17.6 kJ) vs. Pashto (3,147 kJ)</p></div>
+    <div class="card"><div class="stat s-red">📉</div><p><strong>Double penalty:</strong> costliest languages are also the least accurate</p></div>
+    <div class="card"><div class="stat s-green">122</div><p>languages measured on Belebele; divide holds across 5 models, 2 GPUs, 6 batch sizes, 3 tasks</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>📊 The divide, visualized</h2>
+  <figure>
+    <img src="figures/energy_per_token.png" alt="Energy per output token across 122 languages">
+    <figcaption>Energy per output token across 122 languages (Qwen3-8B, zero-shot CoT, Belebele).
+    A long right tail of low-resource, non-Latin-script languages exceeds 0.4 J/token.</figcaption>
+  </figure>
+  <figure>
+    <img src="figures/energy_per_response.png" alt="Energy per response across 122 languages">
+    <figcaption>Energy per response across 122 languages (log scale): the per-token cost compounds
+    with inflated output-token counts to produce up to a 179× end-to-end gap.</figcaption>
+  </figure>
+</div></section>
+
+<section><div class="wrap">
+  <h2>🔍 Why it happens</h2>
+  <ul>
+    <li><strong>Per-token cost:</strong> tokenizers trained on Latin-dominated corpora fragment
+      complex/rare scripts inefficiently, raising energy per token.</li>
+    <li><strong>Token inflation:</strong> low-resource languages elicit far longer (often
+      repetitive) generations — up to ~20–25× more output tokens than English.</li>
+    <li><strong>Compounding:</strong> the two penalties multiply, and larger sequences force
+      smaller serving batch sizes that underutilize the GPU.</li>
+  </ul>
+  <p class="lead">The disparity persists across model families and sizes (Qwen3-8B/14B/32B,
+  gemma-3-27B, Llama-3.1-8B), across GPUs (L40S, RTX 6000 Pro Blackwell), across batch sizes,
+  and across tasks (Belebele, GSM8K, LM-Arena).</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>✅ Recommendations</h2>
+  <div>
+    <span class="tag">Energy as a first-class evaluation axis</span>
+    <span class="tag">Per-language energy in model cards</span>
+    <span class="tag">Language-aware serving & routing</span>
+    <span class="tag">Translate-then-process pipelines</span>
+    <span class="tag">Equity audits at deployment</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>📚 Citation</h2>
+<pre>@article{language-energy-divide,
+  title  = {The Language--Energy Divide: Measuring Energy Costs of Multilingual LLM Inference},
+  author = {Deng, Naihao and Shen, Alissa and Feng, Yiming and Nwatu, Joan and
+            Chung, Jae-Won and Chowdhury, Mosharaf and Chen, Yulong and Mihalcea, Rada},
+  year   = {2026}
+}</pre>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    Built on the <a href="https://ml.energy/leaderboard">ML.ENERGY Benchmark</a> ·
+    <a href="https://ml.energy/zeus">Zeus</a> · Multilingual data from
+    <a href="https://github.com/facebookresearch/belebele">Belebele</a>.<br>
+    © 2026 · <a href="https://github.com/MichiganNLP/language-energy-divide">MichiganNLP / LIT @ UMich</a>
+  </div>
+</footer>
+</body>
+</html>
